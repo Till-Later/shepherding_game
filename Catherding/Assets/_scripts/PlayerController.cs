@@ -29,6 +29,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 direction = new Vector3(Input.GetAxis(horizontal_axis), 0, Input.GetAxis(vertical_axis));
+        if (direction != Vector3.zero) {
+            rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 40f);
+            rot.x = 0;
+            rot.z = 0;
+        }
+        transform.rotation = rot;
+
         direction *= speed * Time.deltaTime;
 
         //int layer  = LayerMask.NameToLayer("Ground");
@@ -46,11 +53,6 @@ public class PlayerController : MonoBehaviour
 
         rigidbody.velocity = direction;
         
-        if (direction != Vector3.zero) {
-            rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 40f);
-            rot.x = 0;
-            rot.z = 0;
-        }
-        transform.rotation = rot;
+
     }
 }
