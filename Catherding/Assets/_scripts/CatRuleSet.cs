@@ -18,6 +18,8 @@ public class CatRuleSet : MonoBehaviour
     [SerializeField][Range(1, 100)] float AlignmentDistance = 5;
     [SerializeField][Range(1, 100)] float LaserpointerWeight = 5;
     [SerializeField][Range(1, 100)] float LaserpointerDistance = 5;
+    [SerializeField][Range(1, 100)] float cucumberDistance = 5;
+    [SerializeField][Range(1, 100)] float cucumberWeight = 5;
 
     GameObject laserpointer;
 
@@ -54,10 +56,22 @@ laserpointer = GameObject.FindAnyObjectByType<LaserController>().gameObject;
         laserpointerDirection.Normalize();
         }
 
-        Vector3 desiredDirection = (coherenceDirection * CoherenceWeight) + (separationDirection * SeparationWeight) + (alignmentDirection * AlignmentWeight) + (laserpointerDirection * LaserpointerWeight);
-        desiredDirection = desiredDirection / (CoherenceWeight + SeparationWeight + AlignmentWeight + LaserpointerWeight);
+        List<Cucumber> cucumbers = new List<Cucumber>();
+        foreach(Cucumber c in GameObject.FindObjectsOfType<Cucumber>())
+        {
+    if (Vector3.Distance(transform.position, c.transform.position) < cucumberDistance)
+            {
+cucumbers.Add(c);
+            }
+        }
+        Vector3 cucumberDirection = GetCucumberDirection(cucumbers);
+        cucumberDirection.Normalize();
+
+        Vector3 desiredDirection = (coherenceDirection * CoherenceWeight) + (separationDirection * SeparationWeight) + (alignmentDirection * AlignmentWeight) + (laserpointerDirection * LaserpointerWeight) + (cucumberDirection * cucumberWeight);
+        desiredDirection = desiredDirection / (CoherenceWeight + SeparationWeight + AlignmentWeight + LaserpointerWeight + cucumberWeight);
 
         desiredDirection.Normalize();
+        //desiredDirection.y = 0;
 
         gizmosPos = transform.position + desiredDirection;
 
@@ -69,7 +83,9 @@ laserpointer = GameObject.FindAnyObjectByType<LaserController>().gameObject;
         Vector3 actualDirection = rigidbody.rotation * Vector3.forward;
         actualDirection.Normalize();
         
-        rigidbody.velocity = (desiredDirection + actualDirection) * Time.deltaTime * speed;
+        Vector3 vel = (desiredDirection + actualDirection) * Time.deltaTime * speed;
+       vel.y = rigidbody.velocity.y;
+        rigidbody.velocity = vel;
     }
 
     private Vector3 gizmosPos;
@@ -92,6 +108,25 @@ laserpointer = GameObject.FindAnyObjectByType<LaserController>().gameObject;
         }
 
         return o;
+    }
+
+    Vector3 GetCucumberDirection(List<Cucumber> cucumbers)
+    {
+        int num = 0;
+        Vector3 away = new Vector3();
+
+        foreach (Cucumber c in cucumbers)
+        {
+            away -= (c.transform.position - transform.position).normalized;
+            num += 1;
+        }
+
+        if (num > 0)
+        {
+            away /= num;
+        }
+
+        return away;
     }
 
     Vector3 GetCenterOfCats(List<CatRuleSet> cats)
