@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 617689625}
   - component: {fileID: 617689624}
   - component: {fileID: 617689627}
+  - component: {fileID: 617689628}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -315,11 +316,11 @@ Transform:
   m_GameObject: {fileID: 617689623}
   serializedVersion: 2
   m_LocalRotation: {x: 0.22203097, y: -0, z: -0, w: 0.9750396}
-  m_LocalPosition: {x: 0, y: 6.8, z: -23.2}
+  m_LocalPosition: {x: 29.9, y: 20.2, z: -2.3000011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010643455}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 25.657, y: 0, z: 0}
 --- !u!114 &617689627
 MonoBehaviour:
@@ -450,6 +451,29 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &617689628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617689623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce529d6ae3a04294597ff83b5b1cbaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  CameraGo: {fileID: 0}
+  Camera: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  MinFieldOfView: 25
+  MaxFieldOfView: 40
+  CurrentFieldOfView: 0
+  StartZoomDistance: 25
+  MaxZoomDistance: 40
+  currentDistance: 0
 --- !u!1 &671955341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1275,6 @@ Transform:
   m_Children:
   - {fileID: 182997919}
   - {fileID: 1541346714}
-  - {fileID: 617689626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &534661185989263135
@@ -1323,3 +1346,4 @@ SceneRoots:
   - {fileID: 756243826}
   - {fileID: 1043366845}
   - {fileID: 1547198165}
+  - {fileID: 617689626}
