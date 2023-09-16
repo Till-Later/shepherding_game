@@ -45,12 +45,6 @@ public class CameraScaling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.P)) {
-            player1.GetComponent<Rigidbody>().velocity = new Vector3(5, 0, 0);
-        } else {
-            player1.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        }
-
         CameraGo.transform.position = CalculateMidPoint();
         currentDistance =  Vector3.Distance(player1.transform.position, player2.transform.position);
         float zoomPercentage = Mathf.InverseLerp(StartZoomDistance, MaxZoomDistance, currentDistance);
@@ -61,7 +55,7 @@ public class CameraScaling : MonoBehaviour
     private Vector3 CalculateMidPoint() {
         Vector3 midPoint = new Vector3();
         midPoint.x = (player1.transform.position.x + player2.transform.position.x) / 2;
-        midPoint.y = (player1.transform.position.y + player2.transform.position.y) / 2;
+        midPoint.z = (player1.transform.position.z + player2.transform.position.z) / 2;
 
         midPoint.y += offset.y;
         midPoint.z += offset.z;
