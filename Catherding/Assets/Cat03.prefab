@@ -55,10 +55,10 @@ PrefabInstance:
     - target: {fileID: -2135445998859597101, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d994c97b65f7b474191bbf608bb4bc84, type: 2}
+      objectReference: {fileID: 2100000, guid: 081e75a303f832a41bbd49560dcca5d1, type: 2}
     - target: {fileID: 919132149155446097, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Name
-      value: Cat01
+      value: Cat03
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Layer
@@ -67,11 +67,11 @@ PrefabInstance:
     - target: {fileID: 2421855707862594039, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d994c97b65f7b474191bbf608bb4bc84, type: 2}
+      objectReference: {fileID: 2100000, guid: 081e75a303f832a41bbd49560dcca5d1, type: 2}
     - target: {fileID: 6088583986072090483, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d994c97b65f7b474191bbf608bb4bc84, type: 2}
+      objectReference: {fileID: 2100000, guid: 081e75a303f832a41bbd49560dcca5d1, type: 2}
     - target: {fileID: 6180640845926911598, guid: 18fff00aec636c74688164d57ffd417a, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -113,16 +113,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3517501372362874137}
   rotationSpeed: 4
-  speed: 400
+  speed: 200
   CoherenceWeight: 5
   CoherenceDistance: 10
-  SeparationWeight: 40.0297
+  SeparationWeight: 40
   SeparationDistance: 2.1
   AlignmentWeight: 5
   AlignmentDistance: 9.4
-  LaserpointerWeight: 49.4
+  LaserpointerWeight: 15
   LaserpointerDistance: 13.6
-  cucumberDistance: 57.1
+  cucumberDistance: 8.4
   cucumberWeight: 19.4
 --- !u!54 &3517501372362874137
 Rigidbody:
