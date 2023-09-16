@@ -6,6 +6,7 @@ public class LaserController : MonoBehaviour
 {
     public GameObject player;
     [SerializeField] float offset = 0.5f;
+    [SerializeField] LayerMask layers;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class LaserController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(player.transform.position, -Vector3.up, out hit))
+        if (Physics.Raycast(player.transform.position, -Vector3.up, out hit, Mathf.Infinity, layers))
         {
             transform.position = hit.point + new Vector3(0, offset, 0);
             transform.rotation = Quaternion.LookRotation(hit.normal);

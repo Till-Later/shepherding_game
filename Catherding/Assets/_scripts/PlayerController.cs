@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     new public Rigidbody rigidbody;
 
+    [SerializeField] LayerMask layers;
+
     [SerializeField] float speed = 100;
     [SerializeField] float vertical_speed = 100;
     [SerializeField] float height = 5;
@@ -18,14 +20,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Update is called once perframe
     void Update()
     {
         Vector3 direction = new Vector3(Input.GetAxis(horizontal_axis), 0, Input.GetAxis(vertical_axis));
         direction *= speed * Time.deltaTime;
 
+        //int layer  = LayerMask.NameToLayer("Ground");
+
         RaycastHit hit; 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity, layers))
         {
             float h = hit.point.y + height;
             direction.y = h - transform.position.y;
