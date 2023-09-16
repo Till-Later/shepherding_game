@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
             direction.y *= vertical_speed * Time.deltaTime;
         }
 
-        Vector3 pos = transform.position + direction;
-        pos.y = Mathf.Max(pos.y, 3);
+        //Vector3 pos = transform.position + direction;
+        //pos.y = Mathf.Max(pos.y, 3);
 
-        rigidbody.MovePosition(pos);
+        rigidbody.velocity = direction;
     }
 }
