@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UIElements;
 using System;
 using UnityEngine.UI;
+using UnityEditor.Rendering;
 
 public class CameraScaling : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CameraScaling : MonoBehaviour
     public GameObject player2;
 
     [Header("Camera")]
+    public GameObject CameraGo;
     public Camera Camera;
     public Vector3 offset;
 
@@ -25,6 +27,7 @@ public class CameraScaling : MonoBehaviour
     public float StartZoomDistance = 25;
     public float MaxZoomDistance = 40;
 
+    public float currentDistance;
     void Start()
     {
         CurrentFieldOfView = Camera.fieldOfView;
@@ -48,9 +51,9 @@ public class CameraScaling : MonoBehaviour
             player1.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
 
-        Camera.transform.position = CalculateMidPoint();
-        
-        float zoomPercentage = Mathf.InverseLerp(StartZoomDistance, MaxZoomDistance, Vector3.Distance(player1.transform.position, player2.transform.position));
+        CameraGo.transform.position = CalculateMidPoint();
+        currentDistance =  Vector3.Distance(player1.transform.position, player2.transform.position);
+        float zoomPercentage = Mathf.InverseLerp(StartZoomDistance, MaxZoomDistance, currentDistance);
         CurrentFieldOfView = Mathf.Lerp(MinFieldOfView, MaxFieldOfView, zoomPercentage);
         Camera.fieldOfView = CurrentFieldOfView;
     }
