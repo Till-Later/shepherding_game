@@ -14,15 +14,7 @@ public class audioManager : MonoBehaviour {
         audioSource.Play();
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.D)) {
-            Death();
-        } else if (Input.GetKeyDown(KeyCode.H)) {
-            Happy();
-        } else if (Input.GetKeyDown(KeyCode.S)) {
-            Sad();
-        }
-    }
+
 
     public void Death() {
         audioSource.clip = audioClipDeath;
