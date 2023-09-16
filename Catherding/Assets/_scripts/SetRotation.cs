@@ -5,7 +5,19 @@ using UnityEngine;
 
 public class SetRotation : MonoBehaviour
 {
+    Rigidbody rb;
+    Quaternion rot = new();
+    void Start() {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
     void Update() {
-        transform.rotation = Quaternion.LookRotation(gameObject.GetComponent<Rigidbody>().velocity);
+        Debug.Log(rb.velocity);
+        if (rb.velocity != Vector3.zero) {
+            rot = Quaternion.LookRotation(rb.velocity);
+            rot.x = 0;
+            rot.z = 0;
+            //Debug.Log(rot.y);
+        }
+        transform.rotation = rot;
     }
 }

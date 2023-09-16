@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] string horizontal_axis = "Horizontal1";
     [SerializeField] string vertical_axis = "Vertical1";
+
+    Quaternion rot = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +45,12 @@ public class PlayerController : MonoBehaviour
         //pos.y = Mathf.Max(pos.y, 3);
 
         rigidbody.velocity = direction;
+        
+        if (direction != Vector3.zero) {
+            rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 40f);
+            rot.x = 0;
+            rot.z = 0;
+        }
+        transform.rotation = rot;
     }
 }
