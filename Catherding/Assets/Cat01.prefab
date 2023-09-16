@@ -113,17 +113,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3517501372362874137}
   rotationSpeed: 4
-  speed: 400
+  speed: 600
   CoherenceWeight: 5
   CoherenceDistance: 10
-  SeparationWeight: 40.0297
+  SeparationWeight: 44.5
   SeparationDistance: 2.1
   AlignmentWeight: 5
   AlignmentDistance: 9.4
-  LaserpointerWeight: 49.4
-  LaserpointerDistance: 13.6
-  cucumberDistance: 57.1
-  cucumberWeight: 19.4
+  LaserpointerWeight: 41.4
+  LaserpointerDistance: 26.9
+  cucumberDistance: 30.4
+  cucumberWeight: 54.1
 --- !u!54 &3517501372362874137
 Rigidbody:
   m_ObjectHideFlags: 0
